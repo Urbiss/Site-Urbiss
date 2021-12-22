@@ -1,0 +1,87 @@
+<p-sidebar [(visible)]="showSidebar">
+  <h1 style="font-weight:normal">Menu</h1>
+  <hr class="dropdow-divider">
+  <button type="button" class="btn btn-light dropdown-item mt-5" (click)="loadStreetMap()"><i class="bi bi-map mr-5"></i>Mapa</button>
+  <hr class="dropdown-divider">
+  <button type="button" class="btn btn-light dropdown-item" (click)="loadSatelliteMap()"><i class="bi bi-card-image mr-5"></i>Satélite</button>
+  <hr class="dropdown-divider">
+  <p-autoComplete class="custom-search" placeholder="Digite uma cidade..." [(ngModel)]="citySelected" [suggestions]="suggestions" (completeMethod)="search($event)" size="31px"></p-autoComplete>
+  <button [disabled]="false" class="p-button-raised mb-4 btn-urbiss" label="Atualizar" pButton pRipple style="font-weight: bold" class="btn-atualizar"></button>
+</p-sidebar>
+
+<div id="openlayers_map"></div>
+
+<div>
+  <div class="control-container">
+	<div class="button-mbr" (click)="showMbr()"><i class="bi bi-search"></i></div>
+  </div>
+  <select class="map-cities" (change)="handleCity($event.target.value)">
+	<option value="0">Selecione uma cidade</option>
+	<option *ngFor="let city of cities" [value]="city.id">
+	  {{city.name}}
+	</option>
+  </select>
+  <div class="map-show-options" (click)="handleMap()">
+	<div *ngIf="satelite">
+      <i class="bi bi-map mr-5"></i>
+	  <label>Mapa</label>
+	</div>
+	<div *ngIf="!satelite">
+	  <i class="bi bi-card-image mr-5"></i>
+	  <label>Satélite</label>
+	</div>
+  </div>
+</div>
+
+<div class="order-survey">
+  <ng-template #modal>
+	<div *ngIf="!orderConfirmation">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Área selecionada #{{selectedArea.userSurveyId}}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	    <div class="survey-container">
+	      <p>
+		    <label class="info-title">Área:</label><label class="item">{{selectedArea.area | number:'1.2-2':'pt'}} metros</label>
+	      </p>
+	      <div class="survey-detail" *ngFor="let survey of selectedArea.surveys">
+          <p><label class="info-detail-title"><b>Data do levantamento:</b> {{survey.surveyDate | date:'dd/MM/yyyy' }}</label></p>
+          <p><label class="info-detail-title"><b>Preço:</b> {{survey.price | currency:'BRL':'symbol':'1.2-2':'pt' }}</label></p>
+          <p><label class="info-detail-title"><b>Produtos disponíveis: </b></label></p>
+		    <div class="survey-products" *ngFor="let product of survey.products">
+		      <label class="survey-product-item">{{product.productName}}</label>
+	        </div>
+		    <div class="survey-action">
+		      <button [disabled]="false" class="p-button-raised mb-4 btn-order" label="Solicitar" pButton pRipple style="font-weight: bold" (click)="order(selectedArea.userSurveyId, survey.surveyId)"></button>
+		    </div>
+	      </div>
+	      <ng-template [ngIf]="emptySurveys">
+	        <div class="survey-detail survey-detail-empty">
+		      Nenhuma informação encontrada para esta área.
+	        </div>
+	      </ng-template>
+	    </div>
+      </div>
+	</div>
+	<div class="confirm-order-dialog" *ngIf="orderConfirmation">
+	  <div class="modal-header">
+		<h4 class="modal-title pull-left">Confirmar Pedido</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	  </div>
+	  <div class="modal-body">
+		<div class="survey-container">
+		  <div class="center">
+		    <p><label>Para confirmar o pedido, insira o Voucher:</label></p>
+		    <input type="text" class="order-voucher" mask="9999-AAAA-AAAA" placeholder="****-****-****" (keyup)="handleVoucher($event)"/>
+			<button [disabled]="false" class="p-button-raised mb-4 btn-order btn-confirm-order" label="Confirmar" pButton pRipple style="font-weight: bold" (click)="confirmOrder()" [disabled]="voucher === ''"></button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </ng-template>
+</div>

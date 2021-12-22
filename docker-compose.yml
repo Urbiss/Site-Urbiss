@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:12
+    environment:
+      POSTGRES_PASSWORD: "123123"
+    ports:
+      - "15432:5432"
+    volumes: 
+      - ../db/postgres:/var/lib/postgresql/data
+      - ../db/dump:/home/dump
+  api:
+    build: .
+    ports: 
+      - "5000:5000"
+    volumes:
+      - .:/usr/src/api
+    links:
+      - db
+  site:
+    build: ./app
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./app:/usr/src/app
+    links:
+      - api

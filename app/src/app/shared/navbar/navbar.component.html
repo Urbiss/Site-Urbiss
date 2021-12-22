@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-light navbar-color" style="z-index: 2">
+  <div class="container-fluid">
+    <div class="col-3">
+      <img src="assets/urbiss_logo.png" alt="Urbiss" class="logo" routerLink="/"/>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto" dropdown>
+        <li class="nav-item dropdown" style="cursor: pointer;">
+          <a dropdownToggle class="dropdown-toggle nav-link" aria-controls="dropdown-basic" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            <span>
+              {{username || 'Usuário'}}
+            </span>
+          </a>
+          <div id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+               role="menu">
+            <a role="menuitem"><a class="dropdown-item" href="#" (click)="logout()">Sair</a></a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

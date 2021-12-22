@@ -1,0 +1,198 @@
+<div *ngIf="!mobile">
+  <div class="col-7 image-container">
+    <img alt="login" class="login-image" src="assets/google-maps-bg-min-min.jpeg"/>
+  </div>
+  <div class="col-5 form-container offset-7">
+    <img src="assets/urbiss_logo.png" alt="logo" height="11%" class="logo">
+    <div class="login-form">
+      <p-tabView [(activeIndex)]="tabViewIndex">
+        <p-tabPanel header="Entrar">
+          <form (ngSubmit)="login()" [formGroup]="loginForm">
+            <div class="card">
+                <span class="p-float-label mt-5">
+                  <input [formGroup]="loginForm" formControlName="email" id="email-input-login" pInputText
+                         pKeyFilter="email">
+                  <label for="email-input-login">E-mail</label>
+                  <span *ngIf="!loginForm.controls['email'].valid&&loginForm.controls['email'].dirty"
+                        class="p-error"></span>
+                </span>
+              <small class="error-hint mt-2" *ngIf="!loginForm.controls['email'].valid&&loginForm.controls['email'].dirty">
+                <i class="bi bi-exclamation-diamond mr-1"></i><strong>Digite um e-mail válido.</strong></small>
+              <span class="p-float-label mt-4">
+                  <input [formGroup]="loginForm" formControlName="password" id="password-input-login" pInputText
+                         type="password">
+                  <label for="password-input-login">Senha</label>
+                   <span *ngIf="!loginForm.controls['password'].valid&&loginForm.controls['password'].dirty"
+                         class="p-error"></span>
+                </span>
+              <small class="error-hint mt-2" *ngIf="!loginForm.controls['password'].valid&&loginForm.controls['password'].dirty">
+                <i class="bi bi-exclamation-diamond mr-1"></i><strong>Essa senha não é válida.</strong></small>
+              <a class="mt-5 forgot-password" (click)="forgotPassword()">Esqueci minha senha</a>
+              <button [disabled]="!loginForm.valid" class="p-button-raised mb-4 btn-urbiss" label="Entrar" pButton pRipple
+                      type="submit" style="font-weight: bold"></button>
+            </div>
+          </form>
+        </p-tabPanel>
+        <p-tabPanel header="Cadastrar">
+          <form (ngSubmit)="register()" [formGroup]="registerForm">
+            <div class="card">
+                <span class="p-float-label mt-4">
+                  <input [formGroup]="registerForm" formControlName="fullName" id="fullname-input-signin" pInputText
+                         type="text">
+                  <label for="fullname-input-signin">Nome Completo</label>
+                   <span *ngIf="registerForm.controls['fullName'].valid&&registerForm.controls['fullName'].dirty"
+                         class="p-error"></span>
+                </span>
+                <small class="error-hint mt-2" *ngIf="!registerForm.controls['fullName'].valid&&registerForm.controls['fullName'].dirty">
+                <i class="bi bi-exclamation-diamond mr-1"></i><strong>Digite um nome válido.</strong></small>
+              <span class="p-float-label mt-4">
+                  <input [formGroup]="registerForm" formControlName="email" id="user-input-signin" pInputText
+                         type="text">
+                  <label for="user-input-signin">E-mail</label>
+                   <span *ngIf="!registerForm.controls['email'].valid&&registerForm.controls['email'].dirty"
+                         class=registerForm></span>
+                </span>
+                <small class="error-hint mt-2" *ngIf="!registerForm.controls['email'].valid&&registerForm.controls['email'].dirty">
+                <i class="bi bi-exclamation-diamond mr-1"></i><strong>Digite um email válido.</strong></small>
+              <span class="p-float-label mt-4">
+                  <input [formGroup]="registerForm" formControlName="password" id="password-input-signin" pInputText
+                         type="password">
+                  <label for="password-input-signin">Senha</label>
+                   <span *ngIf="!registerForm.controls['password'].valid&&registerForm.controls['password'].dirty"
+                         class="p-error"></span>
+                </span>
+                <small class="error-hint mt-2" *ngIf="!registerForm.controls['password'].valid&&registerForm.controls['password'].dirty">
+                <i class="bi bi-exclamation-diamond mr-1"></i><strong>A senha deve conter no mínimo 8 caracteres.</strong></small>
+              <span class="p-float-label mt-4">
+                  <input [formGroup]="registerForm" formControlName="confirmPassword"
+                         id="password-confirm-input-signin" pInputText
+                         type="password">
+                  <label for="password-confirm-input-signin">Confirmar senha</label>
+                   <span
+                     *ngIf="!registerForm.controls['confirmPassword'].valid&&registerForm.controls['confirmPassword'].dirty"
+                     class="p-error"></span>
+                </span>
+                <small class="error-hint mt-2" *ngIf="!registerForm.controls['confirmPassword'].valid&&registerForm.controls['confirmPassword'].dirty">
+                <i class="bi bi-exclamation-diamond mr-1"></i><strong>A senha deve conter no mínimo 8 caracteres.</strong></small>
+              <button [disabled]="!registerForm.valid" class="p-button-raised mb-4 btn-urbiss" label="Cadastrar" pButton pRipple
+                      type="submit"></button>
+            </div>
+          </form>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="mobile">
+  <div class="col-12 image-container" style="background: url('assets/google-maps-bg-min-min.jpeg') no-repeat center center fixed">
+    <img src="assets/urbiss_logo.png" alt="logo" height="11%" class="logo">
+    <div class="login-form">
+      <p-tabView [(activeIndex)]="tabViewIndex">
+        <p-tabPanel header="Entrar">
+          <form (ngSubmit)="login()" [formGroup]="loginForm">
+            <div class="form-group" style="display: flex; flex-direction: column">
+                <span class="p-float-label mt-5">
+                  <input formControlName="email" id="email-input-login-m" pInputText type="text">
+                  <label for="email-input-login-m">E-mail</label>
+                  <span *ngIf="!loginForm.controls['email'].valid&&loginForm.controls['email'].dirty"
+                        class="p-error"></span>
+                </span>
+                <small class="error-hint mt-2" *ngIf="!loginForm.controls['email'].valid&&loginForm.controls['email'].dirty">
+                  <i class="bi bi-exclamation-diamond mr-1"></i><strong>Digite um e-mail válido.</strong></small>
+              <span class="p-float-label mt-4">
+                  <input formControlName="password" id="password-input-login-m" pInputText type="password">
+                  <label for="password-input-login-m">Senha</label>
+                <span *ngIf="!loginForm.controls['password'].valid&&loginForm.controls['password'].dirty"
+                      class="p-error"></span>
+                </span>
+                <small class="error-hint mt-2" *ngIf="!loginForm.controls['password'].valid&&loginForm.controls['password'].dirty">
+                <i class="bi bi-exclamation-diamond mr-1"></i><strong>Essa senha não é válida.</strong></small>
+              <a class="mt-5 forgot-password" (click)="forgotPassword()">Esqueci minha senha</a>
+              <button [disabled]="!loginForm.valid" class="p-button-raised mb-4 btn-urbiss" label="Entrar" pButton pRipple
+                      type="submit"></button>
+            </div>
+          </form>
+        </p-tabPanel>
+        <p-tabPanel header="Cadastrar">
+          <form (ngSubmit)="register()" [formGroup]="registerForm">
+            <div class="form-group" style="display: flex; flex-direction: column">
+                <span class="p-float-label mt-4">
+                  <input formControlName="fullName" id="fullname-input-signin-m" pInputText type="text">
+                  <label for="fullname-input-signin-m">Nome Completo</label>
+                  <span *ngIf="!registerForm.controls['fullName'].valid&&registerForm.controls['fullName'].dirty"
+                        class="p-error"></span>
+                </span>
+              <small class="error-hint mt-2" *ngIf="!registerForm.controls['fullName'].valid&&registerForm.controls['fullName'].dirty">
+                <i class="bi bi-exclamation-diamond mr-1"></i><strong>Digite um nome válido.</strong></small>
+              <span class="p-float-label mt-4">
+                  <input formControlName="email" id="email-input-signin-m" pInputText type="text">
+                  <label for="email-input-signin-m">E-mail</label>
+                  <span *ngIf="!registerForm.controls['email'].valid&&registerForm.controls['email'].dirty"
+                        class="p-error"></span>
+              </span>
+              <small class="error-hint mt-2" *ngIf="!registerForm.controls['email'].valid&&registerForm.controls['email'].dirty">
+                <i class="bi bi-exclamation-diamond mr-1"></i><strong>Digite um email válido.</strong></small>
+              <span class="p-float-label mt-4">
+                  <input formControlName="password" id="password-input-signin-m" pInputText type="password">
+                  <label for="password-input-signin-m">Senha</label>
+                  <span *ngIf="!registerForm.controls['password'].valid&&registerForm.controls['password'].dirty"
+                        class="p-error"></span>
+                </span>
+              <small class="error-hint mt-2" *ngIf="!registerForm.controls['password'].valid&&registerForm.controls['password'].dirty">
+                <i class="bi bi-exclamation-diamond mr-1"></i><strong>A senha deve conter no mínimo 8 caracteres.</strong></small>
+              <span class="p-float-label mt-4">
+                  <input formControlName="confirmPassword" id="password-confirm-input-signin-m" pInputText
+                         type="password">
+                  <label for="password-confirm-input-signin-m">Confirmar senha</label>
+                  <span
+                    *ngIf="!registerForm.controls['confirmPassword'].valid&&registerForm.controls['confirmPassword'].dirty"
+                    class="p-error"></span>
+                </span>
+              <small class="error-hint mt-2" *ngIf="!registerForm.controls['confirmPassword'].valid&&registerForm.controls['confirmPassword'].dirty">
+                <i class="bi bi-exclamation-diamond mr-1"></i><strong>A senha deve conter no mínimo 8 caracteres.</strong></small>
+              <button [disabled]="!registerForm.valid" class="p-button-raised mb-4 btn-urbiss" label="Cadastrar" pButton
+                      pRipple type="submit"></button>
+            </div>
+          </form>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #modal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left col-11">{{modalMessage.header}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="word-wrap: break-word">
+    {{modalMessage.message}}
+  </div>
+</ng-template>
+
+
+<ng-template #modalForgot>
+  <div class="modal-header">
+
+    <h4 class="modal-title pull-left col-11">Redefinição de Senha</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="word-wrap: break-word">
+    <form>
+      <span class="ml-5">Digite seu e-mail para recuperar sua senha</span>
+      <span class="p-float-label mt-4">
+        <input style="width: 70%" id="forgot-password" pInputText type="text" [formControl]="forgotPasswordForm">
+            <p-button (click)="sendPasswordRedefinition()" class="ml-2" [disabled]="forgotPasswordForm.invalid"><i class="bi bi-box-arrow-in-right"></i></p-button>
+        <label for="email-input-signin-m">E-mail</label>
+      </span>
+      <small class="error-hint mt-2" *ngIf="!forgotPasswordForm.valid&&forgotPasswordForm.dirty">
+        <i class="bi bi-exclamation-diamond mr-1"></i><strong>Digite um email válido.</strong></small>
+    </form>
+  </div>
+</ng-template>

@@ -1,0 +1,79 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/ol/ol.css"; //open layers styles
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import '~primeng-lts/resources/primeng.min.css';
+@import '~primeng-lts/resources/themes/bootstrap4-light-blue/theme.css';
+@import '~primeicons/primeicons.css';
+
+.ol-mouse-position {
+  margin-top: 87vh;
+}
+
+.ol-zoom {
+  margin-top: 0px;
+  left: auto !important;
+  right: 10px !important;
+}
+
+.ol-zoomslider {
+  margin-top: 130px;
+}
+
+.ol-zoom .ol-zoom-out {
+  margin-top: 5px;
+}
+
+.ol-feature.ol-control {
+  margin-left: inherit !important;
+  right: 10px;
+  margin-top: 85px !important;
+}
+
+.ol-feature.ol-control ~ .ol-feature.ol-control {
+  margin-top: 122px !important;
+  right: 10px !important;
+}
+
+.modal-dialog.order-survey {
+  width: 80% !important;
+  height: 100% !important;
+  margin: 0px !important;
+}
+
+@media (max-width: 500px) {
+  .modal-dialog.order-survey {
+    width: 100% !important;
+  }
+
+  .ol-zoom {
+	margin-top: 70px;
+  }
+
+  .ol-feature.ol-control {
+	margin-top: 155px !important;
+  }
+  
+  .ol-feature.ol-control ~ .ol-feature.ol-control {
+	margin-top: 192px !important;
+  }
+}
+
+.modal-content {
+  border-radius: 0px !important;
+  height: 100% !important;
+  overflow: auto;
+}
+
+.btn-urbiss, .btn-urbiss:hover, .btn-urbiss:active, .btn-urbiss:visited {
+  background-color: #073D55 !important;
+  border-color: #073D55 !important;
+}
+
+.ol-control button {
+  background-color: #073D55 !important;
+  font-size: 1.35em;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

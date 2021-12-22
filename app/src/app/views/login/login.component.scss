@@ -1,0 +1,90 @@
+.image-container {
+  height: 100%;
+  position: fixed;
+}
+
+.form-container {
+  height: 100%;
+  position: fixed;
+}
+
+.login-image {
+  object-fit: cover;
+  height: 100%;
+  max-width: 100%;
+  background-size: cover;
+  background-position: center;
+  margin-left: -15px;
+}
+
+.login-form {
+  position: absolute;
+  width: 60%;
+  top: 25%;
+  right: 21%;
+
+  @media screen and (max-width: 400px) {
+    width: 100%;
+    left: 0;
+  }
+
+  @media screen and (max-width: 1024px) and (min-width: 400px) {
+    width: 70%;
+    left: 15%;
+  }
+}
+
+input {
+  width: 85%;
+}
+
+button {
+  display: flex;
+  width: 80%;
+  align-self: center;
+  margin-top: 40px;
+}
+
+.p-inputtext {
+  background-color: #F7F6F9;
+  margin-left: 7%;
+}
+
+label {
+  margin-left: 7%;
+}
+
+.bi {
+  font-size: 17px;
+}
+
+.error-hint {
+  margin-left: 7%;
+  color: red;
+}
+
+.forgot-password {
+  align-self: center;
+  cursor: pointer;
+}
+
+.card {
+  border-style: solid;
+  border-width: 1px;
+  padding: 10px;
+  width: 25vw;
+  left: -20px;
+  top: -21px;
+}
+
+.logo {
+  margin-top: 10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (max-width: 1024px) {
+    align-content: center;
+    margin-top: 15%;
+  }
+}
